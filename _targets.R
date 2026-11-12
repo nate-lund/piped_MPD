@@ -43,13 +43,21 @@ list(
   tar_target(
     raw_data,
     read_excel(path = list.files("_inputs/_measurements/test.xlsx", full.names = TRUE),
-               sheet = "Sheet1")
-  )
+               sheet = "Sheet1"),
+    cue = tar_cue(mode = "always")
+  ),
   
   ### Split bulk data for sharding? ====
   tar_target(
     split_list,
     split_data(raw_data)
+  ),
+  
+  tar_target(
+    encal_spectra,
+    energy_cal_tka(tka_files),
+    pattern = map(tka_files),
+    iteration = "list"
   )
   
 )
