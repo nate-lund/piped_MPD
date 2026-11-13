@@ -1,15 +1,15 @@
 #================================ Packages ================================
 
-# libraries needed
+# List libraries needed
 libs <- c("httr", "jsonlite", "ggplot2", "terra", "leaflet", "ncdf4", "tidyr", "dplyr", "readr", "targets", "usethis", "sf", "targets", "visNetwork", "tarchetypes", "tidyterra", "performance", "see", "RColorBrewer", "lme4", "nlme", "readxl", "writexl", "emmeans", "splines", "lspline", "ggeffects", "lubridate", "cowplot", "gridGraphics", "broom", "DT", "flextable", "wesanderson", "ggspatial", "extrafont", "officer", "svglite", "ggspatial", "stringr", "ggh4x", "ggrepel", "magick", "broom.mixed", "lmerTest")
 
-# install missing libraries
+# Install missing libraries
 installed_libs <- libs %in% rownames(installed.packages())
 if (any(installed_libs == F)) {
   install.packages(libs[!installed_libs])
 }
 
-# load libraries
+# Load libraries
 lapply(libs, library, character.only = T)
 
 
@@ -28,7 +28,6 @@ tar_source(
 )
 
 
-
 #' [WHEN RUNNING FOR THE FIRST TIME]
 # Run commented out code below to clear storage:
 # tar_destroy(destroy = c("objects")); file.remove(list.files("_plot_outputs", full.names = TRUE))
@@ -42,7 +41,7 @@ list(
   ### Read bulk data ====
   tar_target(
     raw_data,
-    read_excel(path = list.files("_inputs/_measurements/test.xlsx", full.names = TRUE),
+    read_excel(path = list.files("_inputs/_measurements", full.names = TRUE),
                sheet = "Sheet1"),
     cue = tar_cue(mode = "always")
   ),
@@ -53,11 +52,28 @@ list(
     split_data(raw_data)
   ),
   
+  ## Compute Ksat values ====
   tar_target(
-    encal_spectra,
-    energy_cal_tka(tka_files),
-    pattern = map(tka_files),
+    Ksat_list,
+    compute_Ksat(split_list),
+    pattern = map(split_list),
     iteration = "list"
+  ),
+  
+  ## Plot each individual measurement ====
+  tar_target(
+    infiltration_plots,
+    plotting(Ksat_list),
+    pattern = map(Ksat_list),
+    iteration = "list",
+    format = "file"
+  ),
+  
+  ## Bind ksats ====
+  tar_target(
+    all_Ksats,
+    bind_rows(Ksat_list[[2]])
   )
+  
   
 )

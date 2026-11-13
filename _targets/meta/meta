@@ -1,0 +1,19 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+Ksat_list_|branch||b7bb2fd3e6465b62|edeaaecceb62c228|1278598937||t20770.5925986631s||0|rds|local|list|Ksat_list||0.05||object 'split_list' not found
+split_list|stem|7051986b97ae5835|690eb8292547b91e|a1b6bcc570bee7d8|1294558592||t20770.5982805896s|s100b|100|rds|local|vector||split_list_eca91b027e8a5018*split_list_789be88f90f74e48|0.05||
+infiltration_plots_18cccad9d41adcce|branch||13901242b48eb504|1a8bf1fa23fe6b2b|1773424672||t20770.6409191514s||0|file|local|list|infiltration_plots||0.06||`data` must be a <data.frame>, or an object coercible by `fortify()`, or a valid <data.frame>-like object coercible by `as.data.frame()`. Caused by error in `check_data_frame_like()`: ! `dim(data)` must return an <integer> of length 2.
+infiltration_plots_28fd74e90404887d|branch||13901242b48eb504|1a8bf1fa23fe6b2b|1653422933||t20770.6409199213s||0|file|local|list|infiltration_plots||0.05||`data` must be a <data.frame>, or an object coercible by `fortify()`, or a valid <data.frame>-like object coercible by `as.data.frame()`. Caused by error in `check_data_frame_like()`: ! `dim(data)` must return an <integer> of length 2.
+Ksat_list_18cccad9d41adcce|branch|7ceb532c1cd8e20a|b7bb2fd3e6465b62|22d863df1b4bb6e4|-334280456||t20770.6503106302s|s1188b|1188|rds|local|list|Ksat_list||0.08||
+Ksat_list_28fd74e90404887d|branch|030ad6c987780035|b7bb2fd3e6465b62|22d863df1b4bb6e4|2032940812||t20770.6503108631s|s1152b|1152|rds|local|list|Ksat_list||0.02||
+Ksat_list|pattern|4bac8bf294f40c62|b7bb2fd3e6465b62||-287162896||||2340|rds|local|list||Ksat_list_18cccad9d41adcce*Ksat_list_28fd74e90404887d|0.1||
+libs|object|a9e4cf37a4fbfe79
+split_data|function|e19b28bd200e2c0b
+plotting|function|9292aed471c2f60d
+.Random.seed|object|48d64694c94cae5d
+compute_Ksat|function|4c8778d83342db14
+installed_libs|object|933863c44e17ca7f
+raw_data|stem|d815d0f115f8dd64|42e53c306fdec2aa|2c530c1562a7fbd1|-1101284392||t20770.6505578233s|s722b|722|rds|local|vector|||0.03||
+all_Ksats|stem||1516dcbca6943c02|30bcbce0adbe4d32|-294252132||t20770.6433187185s||0|rds|local|vector|||0.03||Argument 1 must be a data frame or a named atomic vector.
+infiltration_plots_320816b1afed0011|branch|59c27b0cd79c7d83|13901242b48eb504|9a527f1071bb22fc|-1321612714|_plot-outputs/2026-11-12_ARB-JW_1.png|t20770.6505611802s|s78008b|78008|file|local|list|infiltration_plots||0.19||
+infiltration_plots_a69fb09d337a1426|branch|7b7e8fa3fee9dec6|13901242b48eb504|87d6bb47d483184c|-1146441512|_plot-outputs/2026-11-12_ARB-JW_2.png|t20770.6505625429s|s77724b|77724|file|local|list|infiltration_plots||0.1||
+infiltration_plots|pattern|33edff24f4d0b701|13901242b48eb504||1155264027||||155732|file|local|list||infiltration_plots_320816b1afed0011*infiltration_plots_a69fb09d337a1426|0.29||
